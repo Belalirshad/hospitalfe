@@ -17,7 +17,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 
-
 export default function BasicSelect() {
   const rows = [
     { id: "Medical fitness Certificate", name: "MEDICAL FITNESS CERTIFICATE " },
@@ -50,8 +49,8 @@ export default function BasicSelect() {
     url = "https://hospital3.onrender.com/client/reportList";
   }
   // toast message
-  const notifysuccess = (msg) => toast.success(msg, { autoClose: 2000 });
-  const notifyfailure = (msg) => toast.error(msg, { autoClose: 2000 });
+  const notifysuccess = (msg) => toast.success(msg, { autoClose: 1500 });
+  const notifyfailure = (msg) => toast.error(msg, { autoClose: 1500 });
 
   const handleChange = (event) => {
     setClient(event.target.value);
@@ -164,11 +163,13 @@ export default function BasicSelect() {
     }
     // console.log("Converting",typeof element.outerHTML, "===>",typeof element.innerHTML);
     const htmlContent = element.outerHTML;
+    let person = excelData[0]["NAME"];
     // const companyName = client;
     let payload = {
       htmlContent: htmlContent,
       companyName: clientName,
       category: type,
+      name: person,
     };
 
     // let payload = {
@@ -185,13 +186,16 @@ export default function BasicSelect() {
       })
       .then((response) => {
         notifysuccess("File uploaded successfully");
-        console.log("=====>", response);
+        setTimeout(() => {
+          window.location.replace("/uploadDownload");
+        }, 2500);
+        // console.log("=====>", response);
       })
       .catch((err) => {
         console.log("=====>", err);
       });
   };
-  console.log("client upload", client);
+  // console.log("client upload", client);
   return (
     <>
       <ToastContainer />
@@ -269,92 +273,6 @@ export default function BasicSelect() {
         )}
         <br />
         <br />
-        {/* {role !== "ADMIN" && (
-          <Button
-            variant="contained"
-            component="label"
-            style={{ backgroundColor: "rgb(1,64,118)" }}
-            startIcon={<CloudDownloadOutlinedIcon />}
-          >
-            Download File
-          </Button>
-        )}
-
-        <Box>
-          {role !== "CLIENT" ? null : (
-            // <div
-            //   style={{
-            //     height: 740,
-            //     width: "95vw",
-            //     marginBottom: "100px",
-            //     marginTop: "150px",
-            //     marginLeft: "20px",
-            //     border: "2px solid rgb(1,64,118)",
-            //   }}
-            // >
-            //   <Typography
-            //     align="center"
-            //     component="h2"
-            //     variant="h4"
-            //     style={{
-            //       backgroundColor: "rgb(1,64,118)",
-            //       color: "white",
-            //       height: "50px",
-            //     }}
-            //   >
-            //     Uploaded Docs
-            //   </Typography>
-            //   <DataGrid
-            //     sx={{ my: 0.1 }}
-            //     rows={data}
-            //     columns={columns}
-            //     initialState={{
-            //       pagination: {
-            //         paginationModel: {
-            //           pageSize: 10,
-            //         },
-            //       },
-            //     }}
-            //     pageSizeOptions={[10]}
-            //     disableRowSelectionOnClick
-            //   />
-            // </div>
-            <div
-              style={{
-                height: 740,
-                width: "95vw",
-                marginBottom: "100px",
-                marginTop: "110px",
-                marginLeft: "20px",
-                border: "2px solid rgb(1,64,118)",
-              }}
-            >
-              <Typography
-                align="center"
-                component="h2"
-                variant="h4"
-                style={{
-                  backgroundColor: "rgb(1,64,118)",
-                  color: "white",
-                  height: "50px",
-                }}
-              >
-                Report List
-              </Typography>
-              <DataGrid
-                sx={{ my: 0.1 }}
-                rows={data}
-                columns={columns}
-                // pagination={5}
-                checkboxSelection
-                {...data}
-              />
-              <span style={{ fontSize: 10 }}>
-                {JSON.stringify(selectedRows, null, 4)}
-              </span>
-            </div>
-          )}
-        </Box> */}
         <div>
           <button
             className="custom-button"
@@ -2053,18 +1971,23 @@ export default function BasicSelect() {
                               S/o or D/o or W/o
                               {item["FATHER NAME"]}
                             </b>{" "}
-                            /<b>Age {item["AGE"]} YEARS/ M</b>
-                            {" "}undergone medical Health check up today bases on
-                            examination and investigation reports, He/She is
-                            free from infectius or contagious diseases and is
-                            Medically fit to continue His/Her duties.
+                            /<b>Age {item["AGE"]} YEARS/ M</b> undergone medical
+                            Health check up today bases on examination and
+                            investigation reports, He/She is free from infectius
+                            or contagious diseases and is Medically fit to
+                            continue His/Her duties.
                           </p>
                         </div>
                       </div>
                     ))}
                 </div>
-                <div style={{display:"flex", flexDirection:"row-reverse"}}>
-                  <img width="260" height="170" src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1685877334/signature_tvw5av.jpg" alt="signature" />
+                <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+                  <img
+                    width="260"
+                    height="170"
+                    src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1685877334/signature_tvw5av.jpg"
+                    alt="signature"
+                  />
                 </div>
               </div>
               {/* <div className="pdf" style={{ paddingTop: "4rem" }}> */}

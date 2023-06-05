@@ -12,6 +12,12 @@ export default function DownloadReport() {
 
   let role = token !== null ? jwtDecode(token).role : "";
 
+  const currentTime = Date.now() / 1000; // Convert current time to seconds
+  if (jwtDecode(token).exp < currentTime) {
+    localStorage.removeItem("token");
+    window.location.replace("/login");
+  }
+
   // toast message
   const notifysuccess = (msg) => toast.success(msg, { autoClose: 2000 });
   const notifyfailure = (msg) => toast.error(msg, { autoClose: 2000 });
@@ -54,19 +60,22 @@ export default function DownloadReport() {
   //     console.log("Sending data to the server:", row);
   //   };
 
-  const handleDownloadClick = (e, pdfUrl) => {
-    e.preventDefault();
-    axios
-      .get("http://localhost:2001/client/download?" + pdfUrl)
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          notifysuccess("File is successfully downloaded");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleDownloadClick = async (e, fileUrl) => {
+    try {
+      const response = await axios.get(fileUrl, {
+        responseType: "blob", // Set the response type to 'blob'
       });
+
+      const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.setAttribute("download", "file.pdf"); // Set the desired file name
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.log("Error downloading file:", error);
+    }
   };
 
   return (
@@ -78,6 +87,7 @@ export default function DownloadReport() {
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Employee Name</th>
                 <th>Company Name</th>
                 <th>Document</th>
                 <th>Category</th>
@@ -89,6 +99,7 @@ export default function DownloadReport() {
               {data.map((row) => (
                 <tr key={row.id} onClick={() => handleRowClick(row)}>
                   <td>{row.id}</td>
+                  <td>{row.clientName}</td>
                   <td>{row.companyName}</td>
                   <td>
                     <iframe
