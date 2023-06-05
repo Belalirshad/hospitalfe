@@ -1,0 +1,18 @@
+
+.text-style {
+    text-decoration: none;
+    color: #fff;
+}
+
+.text-style:hover {
+    text-decoration: none;
+    color: #97dcf7;
+}
+
+.text-style-fullscrn {
+    background-color: rgb(0,64,118);
+}
+
+.text-style-fullscrn:hover {
+    background-color: rgb(74, 161, 232);
+}

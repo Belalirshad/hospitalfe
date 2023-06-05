@@ -1,0 +1,57 @@
+/* .pdf {
+    border : 1px solid gray;
+    margin: 10px;
+    margin-left:2rem;
+
+}
+
+.heading-pdf{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+table {
+
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+}
+
+th, td {
+  border: 1px solid rgb(172, 167, 167);
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+                    
+.patient-pdf {
+    display: flex;
+    justify-content: space-between;
+    
+}
+.page-break {
+    page-break-before: always;
+    /* or use 'page-break-after: always;' to break after the element */
+  /* } */ 
+
+  .custom-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding around the button */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add cursor pointer */
+    border-radius: 4px; /* Add rounded corners */
+    margin-left: 2rem;
+  }
+  
+  .custom-button:hover {
+    background-color: #45a049; /* Darker green color on hover */
+  }

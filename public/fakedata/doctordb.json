@@ -1,0 +1,82 @@
+{
+    "docs": [
+        {
+            "doc_id": 1,
+            "name": "DR MEENAKSHI THAKUR",
+            "specialize": "MANAGING DIRECTOR(GYNE)",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 2,
+            "name": "DR VARUN AGGARWAL",
+            "specialize": "ORTHO",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 3,
+            "name": "DR RAMESH KUMAR",
+            "specialize": "MEDICAL OFFICER",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 4,
+            "name": "DR DIGVIJAY THAKUR",
+            "specialize": "MEDICAL OFFICER",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 5,
+            "name": "DR V S CHANARIA",
+            "specialize": "MBBS(Anastral)",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 6,
+            "name": "DR JAGTAR SINGH",
+            "specialize": "MEDICAL OFFICER",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 7,
+            "name": "DR RAMESH KUMAR",
+            "specialize": "MEDICAL OFFICER",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 8,
+            "name": "DR MEHAK BAMS",
+            "specialize": "RADIOLOGIST",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 9,
+            "name": "DR ICANHAIYA",
+            "specialize": "RADIOLOGIST",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 10,
+            "name": "DR MOHIT WAUA",
+            "specialize": "CARDIOLOGIST",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 11,
+            "name": "DR BHARTI NANAD",
+            "specialize": "DENTAL",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 12,
+            "name": "DR GURPREET KAUR",
+            "specialize": "MEDICAL OFFICER",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        },
+        {
+            "doc_id": 12,
+            "name": "VEENA THAKUR",
+            "specialize": "PHARMACIST",
+            "doc_img": "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=1060"
+        }
+    ]
+}
