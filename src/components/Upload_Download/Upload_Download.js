@@ -178,7 +178,7 @@ export default function BasicSelect() {
     // };
     // console.log("payload:", payload);
     axios
-      .post("http://localhost:2001/client/uploadFileCloudinary", {
+      .post("https://hospital3.onrender.com/client/uploadFileCloudinary", {
         ...payload,
         headers: {
           "Content-Type": "application/json",
