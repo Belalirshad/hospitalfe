@@ -172,7 +172,7 @@ export default function BasicSelect() {
       };
 
       const response = await axios.post(
-        "https://hospital3.onrender.com/uploadFileCloudinary",
+        "https://hospital3.onrender.com/client/uploadFileCloudinary",
         payload
       );
 
@@ -285,6 +285,15 @@ export default function BasicSelect() {
                       }}
                       key={index + 1}
                     >
+                        <div style={{display:"flex", justifyContent:"center"}}>
+                          {" "}
+                          <img
+                            width="100"
+                            height="100"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1687457458/MCouncil_page-0001_brgigg.jpg"
+                            alt="banner"
+                          />
+                        </div>
                       <div
                         className="heading-pdf"
                         style={{
