@@ -48,7 +48,7 @@ export default function DownloadReport() {
     }else return true
   });
   useEffect(() => {
-    let url = "http://localhost:2001/client/reportList";
+    let url = "https://hospital3.onrender.com/client/reportList";
     axios
       .get(url, {
         headers: {
