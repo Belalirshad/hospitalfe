@@ -7,7 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function DownloadReport() {
   const [selectedRow, setSelectedRow] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("");
   let token = localStorage.getItem("token");
 
   let role = token !== null ? jwtDecode(token).role : "";
@@ -26,9 +28,27 @@ export default function DownloadReport() {
     setSelectedRow(row);
     // sendDataToServer(row); // Call the function to send data to the server
   };
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
+  const handleYearSelection = (event) => {
+    setSelectedYear(event.target.value);
+  };
+
+  const filteredData = data.filter((row) => {
+    if(searchQuery !== undefined && searchQuery !== "") {
+
+      return row.clientName.toLowerCase().includes(searchQuery.toLowerCase()) || row.empCode.includes(searchQuery);
+    }
+   
+    const rowYear = row.uploadedAt.split("-")[2];
+    if (selectedYear !== undefined && selectedYear !== "") {
+      return rowYear.toString() === selectedYear;
+    }else return true
+  });
   useEffect(() => {
-    let url = "https://hospital3.onrender.com/client/reportList";
+    let url = "http://localhost:2001/client/reportList";
     axios
       .get(url, {
         headers: {
@@ -37,7 +57,7 @@ export default function DownloadReport() {
         },
       })
       .then((response) => {
-        console.log(response.data.data, response.data.status);
+        // console.log(response.data.data, response.data.status);
         if (response.data.status === 200) {
           setData(response.data.data);
           // window.location.reload(false);
@@ -46,26 +66,12 @@ export default function DownloadReport() {
       .catch((error) => console.error(error));
   }, []);
 
-  //   const sendDataToServer = (row) => {
-  //     // Implement your code to send data to the server here
-  //     // You can use AJAX, Axios, or any other HTTP library to make the request
-  //     // Example using Axios:
-  //     // axios.post('/api/endpoint', row)
-  //     //   .then(response => {
-  //     //     // Handle response from the server
-  //     //   })
-  //     //   .catch(error => {
-  //     //     // Handle error
-  //     //   });
-  //     console.log("Sending data to the server:", row);
-  //   };
-
   const handleDownloadClick = async (e, fileUrl) => {
     try {
       const response = await axios.get(fileUrl, {
         responseType: "blob", // Set the response type to 'blob'
       });
-
+      console.log(response);
       const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = downloadUrl;
@@ -81,6 +87,26 @@ export default function DownloadReport() {
   return (
     <>
       <ToastContainer />
+      <div
+        className="search"
+        style={{ marginBottom: "-5rem", marginTop: "9rem" }}
+      >
+         
+        <select className="year-filter" value={selectedYear} onChange={handleYearSelection}>
+          <option value="">All Years</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
+        <input
+          style={{ width: "30%" }}
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
+          placeholder="Search by Client Name..."
+          className="search-input"
+        />
+      </div>
+
       {token && role === "CLIENT" ? (
         <div style={{ marginTop: "200px", marginBottom: "100px" }}>
           <table>
@@ -88,6 +114,7 @@ export default function DownloadReport() {
               <tr>
                 <th>ID</th>
                 <th>Employee Name</th>
+                <th>Employee Code</th>
                 <th>Company Name</th>
                 <th>Document</th>
                 <th>Category</th>
@@ -96,10 +123,11 @@ export default function DownloadReport() {
               </tr>
             </thead>
             <tbody>
-              {data.map((row) => (
+              {filteredData.map((row) => (
                 <tr key={row.id} onClick={() => handleRowClick(row)}>
                   <td>{row.id}</td>
                   <td>{row.clientName}</td>
+                  <td>{row.empCode}</td>
                   <td>{row.companyName}</td>
                   <td>
                     <iframe

@@ -30,3 +30,23 @@ table {
   .custom-button:hover {
     background-color: #45a049; /* Darker green color on hover */
   }
+
+  .search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 300px;
+  }
+  .search {
+    display: flex;
+    flex-direction: row;
+  }
+  .year-filter {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 200px;
+  }
+  
