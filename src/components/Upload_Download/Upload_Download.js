@@ -128,15 +128,15 @@ export default function BasicSelect() {
 
     // Call an API to upload the file
     axios
-      .post("https://hospital3.onrender.com/client/readFile", formData, {
+      .post("http://localhost:2001/client/readFile", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "x-access-token": token,
         },
       })
       .then((response) => {
-        console.log("response", response);
-        if (response.status === 200) {
+        // console.log("response", response);
+        if (response.data.status === 200) {
           // console.log("response", response);
           notifysuccess("Mail Merge is successfully completed");
           setEnabled(true);
@@ -147,7 +147,7 @@ export default function BasicSelect() {
           //   window.location.reload(false);
           // }, 2100);
         } else {
-          notifyfailure(response);
+          notifyfailure(response.data.message);
         }
       })
       .catch((err) => {
@@ -172,7 +172,7 @@ export default function BasicSelect() {
       };
 
       const response = await axios.post(
-        "https://hospital3.onrender.com/client/uploadFileCloudinary",
+        "http://localhost:2001/client/uploadFileCloudinary",
         payload
       );
 
@@ -273,7 +273,7 @@ export default function BasicSelect() {
           {type && type === "MEDICAL HEALTH CHECK-UP" ? (
             <div>
               <Box>
-                {excelData.length > 0 &&
+                {excelData && excelData.length > 0 &&
                   excelData.map((item, index) => (
                     <div
                       className="pdf"
@@ -290,7 +290,7 @@ export default function BasicSelect() {
                           <img
                             width="100"
                             height="100"
-                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1687457458/MCouncil_page-0001_brgigg.jpg"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
                             alt="banner"
                           />
                         </div>
@@ -2035,7 +2035,7 @@ export default function BasicSelect() {
           ) : (
             <div>
               <Box>
-                {excelData.length > 0 &&
+                {excelData && excelData.length > 0 &&
                   excelData.map((item, index) => (
                     <div id={`content-to-pdf-${index}`}>
                       <div
@@ -2052,7 +2052,7 @@ export default function BasicSelect() {
                           <img
                             width="100"
                             height="100"
-                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1687457458/MCouncil_page-0001_brgigg.jpg"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
                             alt="banner"
                           />
                         </div>
@@ -2533,7 +2533,7 @@ export default function BasicSelect() {
                               width: "100%",
                               fontSize: "15px",
                             }}
-                            key={`${index}-${item.NAME}`}
+                            // key={`${index}-${item.NAME}`}
                           >
                             <tbody>
                               <tr>
@@ -2613,7 +2613,7 @@ export default function BasicSelect() {
                               width: "100%",
                               fontSize: "15px",
                             }}
-                            key={`${index}-${item.NAME}`}
+                            // key={`${index}-${item.NAME}`}
                           >
                             <tbody>
                               <tr>
@@ -2656,7 +2656,7 @@ export default function BasicSelect() {
                               width: "100%",
                               fontSize: "15px",
                             }}
-                            key={`${index}-${item.NAME}`}
+                            // key={`${index}-${item.NAME}`}
                           >
                             <tbody>
                               <tr>
@@ -2715,7 +2715,7 @@ export default function BasicSelect() {
                               width: "100%",
                               fontSize: "15px",
                             }}
-                            key={`${index}-${item.NAME}`}
+                            // key={`${index}-${item.NAME}`}
                           >
                             <tbody>
                               <tr>
@@ -2893,7 +2893,7 @@ export default function BasicSelect() {
                                   width: "100%",
                                   fontSize: "15px",
                                 }}
-                                key={`${index}-${item.NAME}`}
+                                // key={`${index}-${item.NAME}`}
                               >
                                 <tbody>
                                   <tr>
