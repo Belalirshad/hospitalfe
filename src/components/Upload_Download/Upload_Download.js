@@ -128,7 +128,7 @@ export default function BasicSelect() {
 
     // Call an API to upload the file
     axios
-      .post("http://localhost:2001/client/readFile", formData, {
+      .post("https://hospital3.onrender.com/client/readFile", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "x-access-token": token,
@@ -172,7 +172,7 @@ export default function BasicSelect() {
       };
 
       const response = await axios.post(
-        "http://localhost:2001/client/uploadFileCloudinary",
+        "https://hospital3.onrender.com/client/uploadFileCloudinary",
         payload
       );
 
