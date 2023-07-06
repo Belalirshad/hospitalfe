@@ -102,7 +102,7 @@ export default function DownloadReport() {
           type="text"
           value={searchQuery}
           onChange={handleSearchQueryChange}
-          placeholder="Search by Client Name..."
+          placeholder="Search by Employee Name or Code..."
           className="search-input"
         />
       </div>

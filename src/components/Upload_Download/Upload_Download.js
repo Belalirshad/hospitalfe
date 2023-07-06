@@ -1,14 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+// import { Typography } from "@mui/material";
+// import { DataGrid } from "@mui/x-data-grid";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-import CloudDownloadOutlinedIcon from "@mui/icons-material/CloudDownloadOutlined";
+// import CloudDownloadOutlinedIcon from "@mui/icons-material/CloudDownloadOutlined";
 import FileDownloadDoneOutlinedIcon from "@mui/icons-material/FileDownloadDoneOutlined";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
@@ -142,10 +142,6 @@ export default function BasicSelect() {
           setEnabled(true);
           setExcelData(response.data.data);
           setRowData(type);
-          // return ;
-          // setTimeout(() => {
-          //   window.location.reload(false);
-          // }, 2100);
         } else {
           notifyfailure(response.data.message);
         }
@@ -273,7 +269,8 @@ export default function BasicSelect() {
           {type && type === "MEDICAL HEALTH CHECK-UP" ? (
             <div>
               <Box>
-                {excelData && excelData.length > 0 &&
+                {excelData &&
+                  excelData.length > 0 &&
                   excelData.map((item, index) => (
                     <div
                       className="pdf"
@@ -285,31 +282,86 @@ export default function BasicSelect() {
                       }}
                       key={index + 1}
                     >
-                        <div style={{display:"flex", justifyContent:"center"}}>
-                          {" "}
-                          <img
-                            width="100"
-                            height="100"
-                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
-                            alt="banner"
-                          />
+                      {/* <div style={{display:"flex", justifyContent:"space-between"}}> */}
+                      <div style={{ borderTop: "14px solid #02723A" }}></div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "start",
+                          marginLeft: "3rem",
+                          marginTop: "3px",
+                          marginBottom: "3px",
+                        }}
+                      >
+                        {" "}
+                        <img
+                          style={{ marginRight: "23px" }}
+                          width="100"
+                          height="100"
+                          src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
+                          alt="banner"
+                        />
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          <strong
+                            style={{
+                              color: "#02723A",
+                              fontSize: "50px",
+                              fontWeight: "900",
+                              display: "inline-block",
+                              fontFamily: "Roboto, sans-serif",
+                            }}
+                          >
+                            THAKUR HOSPITAL
+                          </strong>
+                          <h3
+                            style={{
+                              marginLeft: "26px",
+                              marginTop: "-7px",
+                              fontSize: "14px",
+                              color: "#D5CDCD",
+                              letterSpacing: "-1px",
+                            }}
+                          >
+                            Near Senior Officer Colony Vardhman Tehsil Baddi
+                            Distt Solan HP 173205
+                          </h3>
+                          <h3
+                            style={{
+                              marginLeft: "14px",
+                              marginTop: "-16px",
+                              fontSize: "14px",
+                              color: "#D5CDCD",
+                              letterSpacing: "-1.5px",
+                            }}
+                          >
+                            Cell : 8894434967, 7590000720, 8219370920 | Email :
+                            thakurhosptial0657@gmail.com
+                          </h3>
                         </div>
+                      </div>
+                      {/* </div> */}
+                      <div style={{ borderBottom: "2px solid #0AB33B" }}></div>
                       <div
                         className="heading-pdf"
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "center",
+                          margin: "auto",
+                          width: "30%",
                         }}
                       >
                         <div
                           className="container"
                           style={{
                             background: "white",
-                            fontSize: "20px",
+                            fontSize: "16px",
                             fontWeight: "900",
-                            // marginLeft: "20rem",
+                            width: "100%",
+                            marginTop: "5px",
                           }}
                         >
                           {client.toUpperCase()}
@@ -318,15 +370,17 @@ export default function BasicSelect() {
                           className="container"
                           style={{
                             background: "white",
-                            fontSize: "20px",
+                            fontSize: "14px",
                             fontWeight: "700",
                             marginBottom: "10px",
+                            width: "100%",
                           }}
                         >
                           ({rowData})
                         </div>
                       </div>
-                      <hr></hr>
+                      <div style={{ borderBottom: "2px solid #0AB33B" }}></div>
+
                       <div>
                         <table
                           style={{
@@ -336,15 +390,16 @@ export default function BasicSelect() {
                           }}
                         >
                           <tbody>
-                            <tr style={{ width: "100%" }}>
+                            <tr>
                               <td
                                 style={{
+                                  width: "30%",
                                   border: "1px solid rgb(172, 167, 167)",
                                   padding: "8px",
                                   textAlign: "left",
                                 }}
                               >
-                                Dated :-
+                                Date :-{" "}
                               </td>
                               <td
                                 style={{
@@ -356,6 +411,16 @@ export default function BasicSelect() {
                                 {item["DATE"]}
                               </td>
                             </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style={{
+                            borderCollapse: "collapse",
+                            width: "100%",
+                            fontSize: "15px",
+                          }}
+                        >
+                          <tbody>
                             <tr>
                               <td
                                 style={{
@@ -364,7 +429,7 @@ export default function BasicSelect() {
                                   textAlign: "left",
                                 }}
                               >
-                                Name :-
+                                Name :-{" "}
                               </td>
                               <td
                                 style={{
@@ -373,7 +438,8 @@ export default function BasicSelect() {
                                   textAlign: "left",
                                 }}
                               >
-                                Mr/Mrs/Ms. {item["NAME"]}
+                                {item["SEX"] === "Female" ? "Ms." : "Mr."}{" "}
+                                {item["NAME"]}
                               </td>
                               <td
                                 style={{
@@ -433,7 +499,18 @@ export default function BasicSelect() {
                                 {item["DESI."]}
                               </td>
                             </tr>
-                            <tr style={{ width: "100%" }}>
+                          </tbody>
+                        </table>
+
+                        <table
+                          style={{
+                            borderCollapse: "collapse",
+                            width: "100%",
+                            fontSize: "15px",
+                          }}
+                        >
+                          <tbody>
+                            <tr>
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
@@ -498,11 +575,11 @@ export default function BasicSelect() {
                           </tbody>
                         </table>
 
-                        <hr />
+                        {/* <hr /> */}
                         <span style={{ fontWeight: "800" }}>
                           PHYSICAL EXAMINATION
                         </span>
-                        <hr />
+                        {/* <hr /> */}
 
                         <table
                           style={{
@@ -532,7 +609,7 @@ export default function BasicSelect() {
                                 {item["H"] ? item["H"] : item["HIGHT"]}{" "}
                                 <span style={{ fontWeight: "800" }}>CM</span>
                               </td>
-                              <td style={{ width: "8rem" }}></td>
+                              {/* <td style={{ width: "8rem" }}></td> */}
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
@@ -575,7 +652,7 @@ export default function BasicSelect() {
                                   b/min.
                                 </span>
                               </td>
-                              <td style={{ width: "5rem" }}></td>
+                              {/* <td style={{ width: "5rem" }}></td> */}
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
@@ -616,7 +693,7 @@ export default function BasicSelect() {
                                 {item["TEMP"]}
                                 <span style={{ fontWeight: "800" }}>F</span>
                               </td>
-                              <td style={{ width: "5rem" }}></td>
+                              {/* <td style={{ width: "5rem" }}></td> */}
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
@@ -640,7 +717,7 @@ export default function BasicSelect() {
                           </tbody>
                         </table>
 
-                        <hr />
+                        {/* <hr /> */}
                         <span style={{ fontWeight: "800" }}>
                           LAB INVESTIGATION
                         </span>
@@ -702,8 +779,8 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
                                   textAlign: "left",
+                                  padding: "8px",
                                 }}
                               >
                                 DLC :-
@@ -742,6 +819,16 @@ export default function BasicSelect() {
                                 </span>
                               </td>
                             </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style={{
+                            borderCollapse: "collapse",
+                            width: "100%",
+                            fontSize: "15px",
+                          }}
+                        >
+                          <tbody>
                             <tr>
                               <td
                                 style={{
@@ -762,14 +849,14 @@ export default function BasicSelect() {
                                 {item["BG"] ? item["BG"] : item["B GROUP"]}
                                 <span style={{ fontWeight: "800" }}></span>
                               </td>
-                              <td
+                              {/* <td
                                 style={{
                                   width: "8rem",
                                   border: "1px solid rgb(172, 167, 167)",
                                   padding: "8px",
                                   textAlign: "left",
                                 }}
-                              ></td>
+                              ></td> */}
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
@@ -812,14 +899,14 @@ export default function BasicSelect() {
                                   : item["BLOOD SUGAR"]}
                                 <span style={{ fontWeight: "800" }}></span>
                               </td>
-                              <td
+                              {/* <td
                                 style={{
                                   width: "8rem",
                                   border: "1px solid rgb(172, 167, 167)",
                                   padding: "8px",
                                   textAlign: "left",
                                 }}
-                              ></td>
+                              ></td> */}
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
@@ -841,6 +928,16 @@ export default function BasicSelect() {
                                 </span>
                               </td>
                             </tr>
+                          </tbody>
+                        </table>
+                        <table
+                          style={{
+                            borderCollapse: "collapse",
+                            width: "100%",
+                            fontSize: "15px",
+                          }}
+                        >
+                          <tbody>
                             <tr>
                               <td
                                 style={{
@@ -944,12 +1041,101 @@ export default function BasicSelect() {
                             </tr>
                           </tbody>
                         </table>
+                        <br />
+                        <div style={{ marginLeft: "77%", marginTop: "50px" }}>
+                          Doctor's Sign
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                          }}
+                        >
+                          <img
+                            width="260"
+                            height="170"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1685877334/signature_tvw5av.jpg"
+                            alt="signature"
+                          />
+                        </div>
+                        <div
+                          style={{ borderBottom: "3px solid #02723A" }}
+                        ></div>
+                        <div style={{ pageBreakBefore: "always" }}></div>
 
+                        <div style={{ borderTop: "14px solid #02723A" }}></div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "start",
+                            marginLeft: "3rem",
+                            marginTop: "3px",
+                            marginBottom: "3px",
+                          }}
+                        >
+                          {" "}
+                          <img
+                            style={{ marginRight: "23px" }}
+                            width="100"
+                            height="100"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
+                            alt="banner"
+                          />
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            <strong
+                              style={{
+                                color: "#02723A",
+                                fontSize: "50px",
+                                fontWeight: "900",
+                                display: "inline-block",
+                                fontFamily: "Roboto, sans-serif",
+                              }}
+                            >
+                              THAKUR HOSPITAL
+                            </strong>
+                            <h3
+                              style={{
+                                marginLeft: "26px",
+                                marginTop: "-7px",
+                                fontSize: "14px",
+                                color: "#D5CDCD",
+                                letterSpacing: "-1px",
+                              }}
+                            >
+                              Near Senior Officer Colony Vardhman Tehsil Baddi
+                              Distt Solan HP 173205
+                            </h3>
+                            <h3
+                              style={{
+                                marginLeft: "14px",
+                                marginTop: "-16px",
+                                fontSize: "14px",
+                                color: "#D5CDCD",
+                                letterSpacing: "-1.5px",
+                              }}
+                            >
+                              Cell : 8894434967, 7590000720, 8219370920 | Email
+                              : thakurhosptial0657@gmail.com
+                            </h3>
+                          </div>
+                        </div>
+                        {/* </div> */}
+                        <div
+                          style={{ borderBottom: "2px solid #0AB33B" }}
+                        ></div>
+                        <br />
                         <hr />
                         <span style={{ fontWeight: "800" }}>
                           SYSTEMATIC CHECK-UP
                         </span>
-                        <hr />
+                        {/* <hr /> */}
+
                         <table
                           style={{
                             borderCollapse: "collapse",
@@ -963,7 +1149,7 @@ export default function BasicSelect() {
                                 style={{
                                   width: "30%",
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -972,7 +1158,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -983,7 +1169,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -992,7 +1178,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1003,7 +1189,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1012,7 +1198,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1023,7 +1209,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1032,18 +1218,19 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
                                 NAD
                               </td>
                             </tr>
+
                             <tr>
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1052,7 +1239,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1063,7 +1250,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1072,7 +1259,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1083,7 +1270,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1092,7 +1279,7 @@ export default function BasicSelect() {
                               <td
                                 style={{
                                   border: "1px solid rgb(172, 167, 167)",
-                                  padding: "8px",
+                                  padding: "5px",
                                   textAlign: "left",
                                 }}
                               >
@@ -1101,7 +1288,7 @@ export default function BasicSelect() {
                             </tr>
                           </tbody>
                         </table>
-                        <br />
+                        {/* <br /> */}
 
                         <div
                           className="patient-pdf"
@@ -1110,7 +1297,7 @@ export default function BasicSelect() {
                             justifyContent: "space-between",
                           }}
                         >
-                          <div style={{ width: "80%", marginRight: "15rem" }}>
+                          <div style={{ width: "85%", marginRight: "15rem" }}>
                             <span style={{ fontWeight: "800" }}>
                               Deptt. of Pathology
                             </span>
@@ -1127,7 +1314,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1136,7 +1323,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1147,7 +1334,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1156,7 +1343,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1167,7 +1354,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1176,7 +1363,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1187,7 +1374,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1196,7 +1383,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1223,7 +1410,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1232,7 +1419,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1243,7 +1430,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1252,7 +1439,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1265,7 +1452,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1274,7 +1461,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1285,7 +1472,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1294,7 +1481,7 @@ export default function BasicSelect() {
                                   <td
                                     style={{
                                       border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      padding: "5px",
                                       textAlign: "left",
                                     }}
                                   >
@@ -1306,7 +1493,7 @@ export default function BasicSelect() {
                           </div>
                         </div>
 
-                        <div style={{ marginTop: "2rem" }}>
+                        <div>
                           <table
                             style={{
                               borderCollapse: "collapse",
@@ -1321,7 +1508,7 @@ export default function BasicSelect() {
                                     fontWeight: "800",
                                     backgroundColor: "#f2f2f2",
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1332,7 +1519,7 @@ export default function BasicSelect() {
                                     fontWeight: "800",
                                     backgroundColor: "#f2f2f2",
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1343,7 +1530,7 @@ export default function BasicSelect() {
                                     fontWeight: "800",
                                     backgroundColor: "#f2f2f2",
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1356,7 +1543,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1365,7 +1552,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1374,7 +1561,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1386,7 +1573,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1395,7 +1582,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1404,7 +1591,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1415,18 +1602,20 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
                                   Differential Leukocyte Count
                                 </td>
+                                <td>NA</td>
+                                <td>NA</td>
                               </tr>
                               <tr>
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1435,7 +1624,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1444,7 +1633,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1455,7 +1644,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1464,7 +1653,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1473,7 +1662,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1484,7 +1673,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1493,7 +1682,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1502,7 +1691,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1513,7 +1702,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1522,7 +1711,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1531,7 +1720,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1542,7 +1731,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1551,7 +1740,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1560,7 +1749,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1571,7 +1760,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1580,7 +1769,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1589,7 +1778,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1600,7 +1789,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1609,7 +1798,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1620,7 +1809,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1631,7 +1820,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1640,7 +1829,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 >
@@ -1650,7 +1839,7 @@ export default function BasicSelect() {
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
+                                    padding: "5px",
                                     textAlign: "left",
                                   }}
                                 ></td>
@@ -1658,8 +1847,98 @@ export default function BasicSelect() {
                             </tbody>
                           </table>
                         </div>
-                        <hr />
 
+                        <br />
+                        <div style={{ marginLeft: "77%", marginTop: "45px" }}>
+                          Doctor's Sign
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                            marginTop: "0px",
+                          }}
+                        >
+                          <img
+                            width="260"
+                            height="170"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1685877334/signature_tvw5av.jpg"
+                            alt="signature"
+                          />
+                        </div>
+                        <div
+                          style={{ borderBottom: "3px solid #02723A" }}
+                        ></div>
+
+                        <div style={{ pageBreakBefore: "always" }}></div>
+                        <div style={{ borderTop: "14px solid #02723A" }}></div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "start",
+                            marginLeft: "3rem",
+                            marginTop: "3px",
+                            marginBottom: "3px",
+                          }}
+                        >
+                          {" "}
+                          <img
+                            style={{ marginRight: "23px" }}
+                            width="100"
+                            height="100"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
+                            alt="banner"
+                          />
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            <strong
+                              style={{
+                                color: "#02723A",
+                                fontSize: "50px",
+                                fontWeight: "900",
+                                display: "inline-block",
+                                fontFamily: "Roboto, sans-serif",
+                              }}
+                            >
+                              THAKUR HOSPITAL
+                            </strong>
+                            <h3
+                              style={{
+                                marginLeft: "26px",
+                                marginTop: "-7px",
+                                fontSize: "14px",
+                                color: "#D5CDCD",
+                                letterSpacing: "-1px",
+                              }}
+                            >
+                              Near Senior Officer Colony Vardhman Tehsil Baddi
+                              Distt Solan HP 173205
+                            </h3>
+                            <h3
+                              style={{
+                                marginLeft: "14px",
+                                marginTop: "-16px",
+                                fontSize: "14px",
+                                color: "#D5CDCD",
+                                letterSpacing: "-1.5px",
+                              }}
+                            >
+                              Cell : 8894434967, 7590000720, 8219370920 | Email
+                              : thakurhosptial0657@gmail.com
+                            </h3>
+                          </div>
+                        </div>
+                        {/* </div> */}
+                        <div
+                          style={{ borderBottom: "2px solid #0AB33B" }}
+                        ></div>
+                        <br />
+                        <br />
                         <span style={{ fontWeight: "800" }}>
                           URINE ANALYSIS
                         </span>
@@ -1919,7 +2198,7 @@ export default function BasicSelect() {
                         </table>
 
                         <hr />
-
+                        <br />
                         <span style={{ fontWeight: "800" }}>
                           GENERAL IMPRESSION
                         </span>
@@ -1930,10 +2209,99 @@ export default function BasicSelect() {
                           contagious / obnoxious diseases
                         </span>
                         <hr />
+                        <br />
+                        <br />
+                        <div style={{ marginLeft: "77%", marginTop: "170px" }}>
+                          Doctor's Sign
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row-reverse",
+                          }}
+                        >
+                          <img
+                            width="260"
+                            height="170"
+                            src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1685877334/signature_tvw5av.jpg"
+                            alt="signature"
+                          />
+                        </div>
+                        <div
+                          style={{ borderBottom: "3px solid #02723A" }}
+                        ></div>
                         <div style={{ pageBreakBefore: "always" }}>
                           <div
+                            style={{ borderTop: "14px solid #02723A" }}
+                          ></div>
+                          <div
                             style={{
-                              marginTop: "4rem",
+                              display: "flex",
+                              flexDirection: "start",
+                              marginLeft: "3rem",
+                              marginTop: "3px",
+                              marginBottom: "3px",
+                            }}
+                          >
+                            {" "}
+                            <img
+                              style={{ marginRight: "23px" }}
+                              width="100"
+                              height="100"
+                              src="https://res.cloudinary.com/dd7lihgvm/image/upload/v1682452966/WhatsApp_Image_2023-04-26_at_12.07.24_AM_jcrsof.jpg"
+                              alt="banner"
+                            />
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              <strong
+                                style={{
+                                  color: "#02723A",
+                                  fontSize: "50px",
+                                  fontWeight: "900",
+                                  display: "inline-block",
+                                  fontFamily: "Roboto, sans-serif",
+                                }}
+                              >
+                                THAKUR HOSPITAL
+                              </strong>
+                              <h3
+                                style={{
+                                  marginLeft: "26px",
+                                  marginTop: "-7px",
+                                  fontSize: "14px",
+                                  color: "#D5CDCD",
+                                  letterSpacing: "-1px",
+                                }}
+                              >
+                                Near Senior Officer Colony Vardhman Tehsil Baddi
+                                Distt Solan HP 173205
+                              </h3>
+                              <h3
+                                style={{
+                                  marginLeft: "14px",
+                                  marginTop: "-16px",
+                                  fontSize: "14px",
+                                  color: "#D5CDCD",
+                                  letterSpacing: "-1.5px",
+                                }}
+                              >
+                                Cell : 8894434967, 7590000720, 8219370920 |
+                                Email : thakurhosptial0657@gmail.com
+                              </h3>
+                            </div>
+                          </div>
+                          {/* </div> */}
+                          <div
+                            style={{ borderBottom: "2px solid #0AB33B" }}
+                          ></div>
+                          <div
+                            style={{
+                              marginTop: "5.8rem",
                               marginRight: "1rem",
                               marginBottom: "2rem",
                               display: "flex",
@@ -1951,25 +2319,26 @@ export default function BasicSelect() {
                                 <tr>
                                   <td
                                     style={{
-                                      border: "1px solid rgb(172, 167, 167)",
+                                      border: "1px solid #fff",
                                       padding: "8px",
                                       textAlign: "left",
                                       fontWeight: "bold",
                                     }}
                                   >
-                                    Dated
+                                    Date :- {item["DATE"]}
                                   </td>
-                                  <td
+                                  {/* <td
                                     style={{
-                                      border: "1px solid rgb(172, 167, 167)",
-                                      padding: "8px",
+                                      border: "1px solid #fff",
+                                      // padding: "8px",
                                       textAlign: "left",
                                       fontWeight: "bold",
+                                      marginLeft:"-10px"
                                     }}
                                   >
                                     {item["DATE"]}
-                                    <span style={{ fontWeight: "800" }}></span>
-                                  </td>
+                                    {/* <span style={{ fontWeight: "800" }}></span> */}
+                                  {/* </td> */}
                                 </tr>
                               </tbody>
                             </table>
@@ -1982,18 +2351,27 @@ export default function BasicSelect() {
                                   display: "flex",
                                   justifyContent: "center",
                                   fontWeight: "800",
-                                  fontSize: "17px",
+                                  fontSize: "28px",
+                                  fontFamily: "Roboto, sans-serif",
                                 }}
                               >
                                 <p style={{ borderBottom: "1px solid black" }}>
                                   MEDICAL EXAMINATION CERTIFICATE
                                 </p>
                               </div>
-                              <div style={{ width: "60%", margin: "auto" }}>
-                                <p>
+                              <div
+                                style={{
+                                  width: "60%",
+                                  margin: "auto",
+                                  lineHeight: "30px",
+                                  fontSize: "17px",
+                                  fontFamily: "Roboto, sans-serif",
+                                }}
+                              >
+                                <i>
                                   This is to certified that{" "}
                                   <b>
-                                    Mr./Miss/Mrs.
+                                    {item["SEX"] === "Female" ? "Ms." : "Mr."}{" "}
                                     {item["NAME"]}
                                   </b>
                                   .{" "}
@@ -2001,15 +2379,20 @@ export default function BasicSelect() {
                                     S/o or D/o or W/o
                                     {item["FATHER NAME"]}
                                   </b>{" "}
-                                  /<b>Age {item["AGE"]} YEARS/ M</b> undergone
+                                  /<b>Age {item["AGE"]} YEARS/ </b> undergone
                                   medical Health check up today bases on
                                   examination and investigation reports, He/She
                                   is free from infectius or contagious diseases
                                   and is Medically fit to continue His/Her
                                   duties.
-                                </p>
+                                </i>
                               </div>
                             </div>
+                          </div>
+                          <div
+                            style={{ marginLeft: "77%", marginTop: "200px" }}
+                          >
+                            Doctor's Sign
                           </div>
                           <div
                             style={{
@@ -2025,7 +2408,21 @@ export default function BasicSelect() {
                             />
                           </div>
                         </div>
-                        <div style={{ pageBreakBefore: "always" }}></div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+            
+                        <p
+                            style={{ borderBottom: "3px solid #02723A" }}
+                          ></p>
+                        <div style={{ pageBreakBefore: "always" }}>
+                        
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -2035,7 +2432,8 @@ export default function BasicSelect() {
           ) : (
             <div>
               <Box>
-                {excelData && excelData.length > 0 &&
+                {excelData &&
+                  excelData.length > 0 &&
                   excelData.map((item, index) => (
                     <div id={`content-to-pdf-${index}`}>
                       <div
@@ -2047,7 +2445,9 @@ export default function BasicSelect() {
                         }}
                         key={index + 1}
                       >
-                        <div style={{display:"flex", justifyContent:"center"}}>
+                        <div
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
                           {" "}
                           <img
                             width="100"
@@ -2107,7 +2507,7 @@ export default function BasicSelect() {
                                     textAlign: "left",
                                   }}
                                 >
-                                  Dated :-
+                                  Date :-
                                 </td>
                                 <td
                                   style={{
@@ -2119,7 +2519,17 @@ export default function BasicSelect() {
                                   {item["DATE"]}
                                 </td>
                               </tr>
-                              <tr style={{ width: "100%" }}>
+                            </tbody>
+                          </table>
+                          <table
+                            style={{
+                              borderCollapse: "collapse",
+                              width: "100%",
+                              fontSize: "15px",
+                            }}
+                          >
+                            <tbody>
+                              <tr>
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
@@ -2134,13 +2544,11 @@ export default function BasicSelect() {
                                     border: "1px solid rgb(172, 167, 167)",
                                     padding: "8px",
                                     textAlign: "left",
-                                    
                                   }}
                                 >
                                   Mr/Mrs/Ms. {item["NAME"]}
                                 </td>
-                                <td></td>
-                                <td></td>
+
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
@@ -2160,8 +2568,17 @@ export default function BasicSelect() {
                                   Mr. {item["FATHER NAME"]}
                                 </td>
                               </tr>
-                        
-                              <tr style={{ width: "100%" }}>
+                            </tbody>
+                          </table>
+                          <table
+                            style={{
+                              borderCollapse: "collapse",
+                              width: "100%",
+                              fontSize: "15px",
+                            }}
+                          >
+                            <tbody>
+                              <tr>
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
@@ -2182,22 +2599,6 @@ export default function BasicSelect() {
                                 >
                                   {item["DEPTT"]}
                                 </td>
-                                <td
-                                  style={{
-                                    width: "80px",
-                                    border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
-                                    textAlign: "left",
-                                  }}
-                                ></td>
-                                <td
-                                  style={{
-                                    width: "80px",
-                                    border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
-                                    textAlign: "left",
-                                  }}
-                                ></td>
 
                                 <td
                                   style={{
@@ -2221,7 +2622,17 @@ export default function BasicSelect() {
                                   </span>
                                 </td>
                               </tr>
-                              <tr style={{ width: "100%" }}>
+                            </tbody>
+                          </table>
+                          <table
+                            style={{
+                              borderCollapse: "collapse",
+                              width: "100%",
+                              fontSize: "15px",
+                            }}
+                          >
+                            <tbody>
+                              <tr>
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
@@ -2242,22 +2653,6 @@ export default function BasicSelect() {
                                 >
                                   {item["SEX"]}
                                 </td>
-                                <td
-                                  style={{
-                                    width: "80px",
-                                    border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
-                                    textAlign: "left",
-                                  }}
-                                ></td>
-                                <td
-                                  style={{
-                                    width: "80px",
-                                    border: "1px solid rgb(172, 167, 167)",
-                                    padding: "8px",
-                                    textAlign: "left",
-                                  }}
-                                ></td>
 
                                 <td
                                   style={{
@@ -2318,7 +2713,7 @@ export default function BasicSelect() {
                                   {item["H"] ? item["H"] : item["HIGHT"]}{" "}
                                   <span style={{ fontWeight: "800" }}>CM</span>
                                 </td>
-                                <td style={{ width: "8rem" }}></td>
+                                {/* <td style={{ width: "8rem" }}></td> */}
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
@@ -2416,7 +2811,7 @@ export default function BasicSelect() {
                                     b/min.
                                   </span>
                                 </td>
-                                <td style={{ width: "5rem" }}></td>
+                                {/* <td style={{ width: "5rem" }}></td> */}
                                 <td
                                   style={{
                                     border: "1px solid rgb(172, 167, 167)",
@@ -2739,7 +3134,7 @@ export default function BasicSelect() {
                                   TLC :- {item["TLC"]} mill/cumm
                                 </td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td
                                 // style={{
@@ -2761,7 +3156,7 @@ export default function BasicSelect() {
                                   ESR :- {item["ESR"]} mm
                                 </td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>
                                   Blood Group:-{" "}
@@ -2771,7 +3166,7 @@ export default function BasicSelect() {
                                 </td>
                                 <td>RH Factor :- {item["RH FACTOR"]}</td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>
                                   Random Blood Sugar:-{" "}
@@ -2783,14 +3178,14 @@ export default function BasicSelect() {
                                   <strong>(Limit : 70-140mg/dl)</strong>
                                 </td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>
                                   <strong>1. ECG :-</strong> (Report Attached)
                                 </td>
                                 <td>ECG :- Normal Report</td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>
                                   <strong>2. X-Ray of Chest</strong> (X Ray
@@ -2798,18 +3193,19 @@ export default function BasicSelect() {
                                 </td>
                                 <td>View :- Normal Report</td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>
                                   <strong>3. Urine Analysis </strong>
                                 </td>
+                                <td></td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>Appearance :- {item["URINE COLOR"]}</td>
                                 <td>Reaction :- ACIDIC</td>
                               </tr>
-                              <br />
+                              {/* <br /> */}
                               <tr>
                                 <td>Albumin :- NIL</td>
                                 <td>Sugar :- NIL</td>
@@ -2871,9 +3267,9 @@ export default function BasicSelect() {
                           <br />
                           <br />
                           <br />
+                          {/* <br />
                           <br />
-                          <br />
-                          <br />
+                          <br /> */}
 
                           <div
                             className="patient-pdf"
@@ -2882,7 +3278,7 @@ export default function BasicSelect() {
                               justifyContent: "space-between",
                             }}
                           >
-                            <div style={{ width: "80%", marginRight: "15rem" }}>
+                            <div style={{ width: "85%", marginRight: "15rem" }}>
                               <span style={{ fontWeight: "800" }}>
                                 Deptt. of Pathology
                               </span>
@@ -3628,6 +4024,7 @@ export default function BasicSelect() {
                           contagious / obnoxious diseases
                         </span>
                         <hr />
+
                         <div style={{ pageBreakBefore: "always" }}>
                           <div
                             style={{
@@ -3655,7 +4052,7 @@ export default function BasicSelect() {
                                       fontWeight: "bold",
                                     }}
                                   >
-                                    Dated
+                                    Date
                                   </td>
                                   <td
                                     style={{
@@ -3774,6 +4171,7 @@ export default function BasicSelect() {
                             </div>
                           </div>
                         </div>
+                        <div style={{ pageBreakBefore: "always" }}></div>
                       </div>
                       {/* <div className="pdf" style={{ paddingTop: "4rem" }}> */}
                     </div>
