@@ -50,7 +50,7 @@ export default function DataTable() {
   const notifysuccess = (msg) => toast.success(msg, { autoClose: 1500 });
   const notifyfailure = (msg) => toast.error(msg, { autoClose: 1500 });
 
-  const url = "https://hospital3.onrender.com/client/addclient";
+  const url = "https://app.thakurhospital.in/client/addclient";
   // handle add client submit
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -84,7 +84,7 @@ export default function DataTable() {
   };
 
   React.useEffect(() => {
-    let url = 'https://hospital3.onrender.com/client/clientList'
+    let url = 'https://app.thakurhospital.in/client/clientList'
     axios
       .get(url, {
         headers: {

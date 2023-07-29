@@ -66,7 +66,7 @@ const Register = () => {
     };
 
     axios
-      .post("https://hospital3.onrender.com/client/register", payload)
+      .post("https://app.thakurhospital.in/client/register", payload)
       .then((response) => {
         // console.log("response", response);\
         if (response.data.status === 201) {

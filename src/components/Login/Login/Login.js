@@ -53,14 +53,14 @@ const Login = () => {
     };
 
     axios
-      .post("https://hospital3.onrender.com/client/login", payload)
+      .post("https://app.thakurhospital.in/client/login", payload)
       .then((response) => {
         // console.log(response);
         if (response.data.status === 200) {
           notifysuccess(response.data.message)
           setTimeout(() => {
             localStorage.setItem("token", response.data.data.token);
-            window.location.replace("/home");
+            window.location.replace("/");
           }, 1500);
         } else {
           notifyfailure(response.data.message);

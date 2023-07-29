@@ -48,7 +48,7 @@ export default function DownloadReport() {
     }else return true
   });
   useEffect(() => {
-    let url = "https://hospital3.onrender.com/client/reportList";
+    let url = "https://app.thakurhospital.in/client/reportList";
     axios
       .get(url, {
         headers: {
